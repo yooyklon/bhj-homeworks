@@ -1,18 +1,20 @@
 function modal() {
- let modals = document.querySelectorAll('.modal');
- let closes = document.querySelectorAll('.modal__close');
- let showSuccess = document.querySelectorAll('.show-success')[0];
- modals[0].className += ' modal_active';
- console.log(closes);
- closes[0].onclick = function() {
-  modals[0].className = 'modal';
+ let modalMain = document.querySelectorAll('#modal_main')[0];
+ let modalSuccess = document.querySelectorAll('#modal_success')[0];
+ let modalMainClose = document.querySelectorAll('#modal_main .modal__close')[0];
+ let modalCloseLink = document.querySelectorAll('.show-success')[0];
+ let modalSuccessClose = document.querySelectorAll('#modal_success .modal__close')[0];
+ 
+ modalMain.classList.toggle('modal_active');
+ modalMainClose.onclick = function() {
+  modalMain.classList.toggle('modal_active');
  }
- showSuccess.onclick = function() {
-  modals[0].className = 'modal';
-  modals[1].className += ' modal_active';
+ modalCloseLink.onclick = function() {
+  modalMain.classList.toggle('modal_active');
+  modalSuccess.classList.toggle('modal_active');
  }
- closes[2].onclick = function() {
-  modals[1].className = 'modal';
+ modalSuccessClose.onclick = function() {
+  modalSuccess.classList.toggle('modal_active');
  }
 }
 
