@@ -17,20 +17,22 @@ class Game {
   }
 
   registerEvents() {
+    let thisGame = this;
 
     document.addEventListener('keyup', function(event) {
       this.currentSymbol = (document.querySelectorAll('.symbol_current')[0]).innerText;
       if (this.currentSymbol === event.key) {
-        this.success();
+        thisGame.success();
       } else {
-        this.fail();
+        thisGame.fail();
       }
-    })
+     })
   }
 
   success() {
     this.currentSymbol.classList.add('symbol_correct');
     this.currentSymbol = this.currentSymbol.nextElementSibling;
+
     if (this.currentSymbol !== null) {
       return;
     }
@@ -88,5 +90,4 @@ class Game {
   }
 }
 
-new Game(document.getElementById('game'))
-
+new Game(document.getElementById('game'));
