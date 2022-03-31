@@ -4,6 +4,14 @@ const welcome = document.querySelector('.welcome');
 const userId = document.getElementById('user_id');
 let xml = new XMLHttpRequest();
 
+document.addEventListener('DOMContentLoaded', function(event) {
+ if (localStorage.getItem('userId')) {
+  sign.classList.remove('signin_active');
+  welcome.classList.add('welcome_active');
+  userId.textContent = localStorage.getItem('userId');
+ }
+});
+
 xml.onloadend = function(event) {
  if (xml.status == 200) {
   let responseObj = JSON.parse(xml.response);
@@ -12,6 +20,9 @@ xml.onloadend = function(event) {
    sign.classList.remove('signin_active');
    welcome.classList.add('welcome_active');
    userId.textContent = responseObj['user_id'];
+   localStorage.setItem('userId', responseObj['user_id']);
+  } else {
+   alert('Неверный логин/пароль');
   }
  }
 }
