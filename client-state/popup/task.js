@@ -1,4 +1,5 @@
 const modal = document.querySelector('.modal');
+const modalClose = document.querySelector('.modal__close');
 
 document.addEventListener('DOMContentLoaded', function() {
  if (getCookie('modalCloseState') === null) {
@@ -6,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
  }
 })
 
-modal.addEventListener('click', function(event) {
+modalClose.addEventListener('click', function(event) {
  if (event.target.closest('.modal__close')) {
   modal.classList.remove('modal_active');
   document.cookie = 'modalCloseState=true';
